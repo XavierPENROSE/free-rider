@@ -7,8 +7,8 @@ name: ZeroTier+V2ray
 on:
   workflow_dispatch:
   # 取消注释以启用定时任务（默认每小时），具体生成可参考 https://www.freeformatter.com/cron-expression-generator-quartz.html
-  # schedule:
-  #  - cron: "0 0 * ? * *"
+    schedule:
+     - cron: "0 0 * ? * *"
 
 jobs:
   deploy:
@@ -25,7 +25,7 @@ jobs:
       - name: Start ZeroTier
         env:
           # 如果修改了 IP_ASSIGNMENT，那么对于 clash 配置的服务器地址也应当同步。
-          IP_ASSIGNMENT: 10.144.254.254
+          IP_ASSIGNMENT: 10.144.0.10
           ZEROTIER_NETWORK_ID: ${{ secrets.ZEROTIER_NETWORK_ID }}
           ZEROTIER_TOKEN: ${{ secrets.ZEROTIER_TOKEN }}
         run: |
